@@ -36,14 +36,22 @@ def merge_sort(arr): # Name der Variable ist zu lang (1) und bessere Name für M
             i_index += 1
 
 
-def plot_sort(arr): # Ich habe dieses Teil von main Methode für Lesbarkeit getrennt. (8)
- length_arr = range(len(arr)) # Bessere Name für dieses Variabel und, weil Lange der Liste sich nicht nach der Sortierung ändert, werden wir dasselbe Variable nochmal benutzen. (9)
- plt.plot(length_arr,arr)
- plt.show()
+def plot_sort(arr):
+    length_arr = range(len(arr))
+    plt.bar(length_arr, arr)
+    plt.xlabel("Index")
+    plt.ylabel("Wert")
+    plt.title("Vor dem Sortieren")
+    plt.show()
 
- merge_sort(arr)
- plt.plot(length_arr,arr)
- plt.show()
+    merge_sort(arr)
+
+    plt.bar(length_arr, arr)
+    plt.xlabel("Index")
+    plt.ylabel("Wert")
+    plt.title("Nach dem Sortieren")
+    plt.show()
+
 
 def main(): # Ich habe main Methode für Lesbarkeit betont.(10)
  my_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
