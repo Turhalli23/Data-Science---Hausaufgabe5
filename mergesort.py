@@ -1,51 +1,52 @@
-def ASSIGNMENT(new_list, i, old_list, j):
-    new_list[i] = old_list[j]
+import matplotlib.pyplot as plt # Import soll am Anfang für Lesbarkeit bleiben
 
+def merge_sort(arr): # Name der Variable ist zu lang (1) und bessere Name für Methode (2)
+    if (len(arr) > 1): # Wenn Lange der Liste größer als 1 ist, sind andere Voraussetzungen schon erfüllt. (3)
+        mid = len(arr) // 2
+        left_arr = arr[:mid] # Bessere Name für Lesbarkeit (7)
+        right_arr = arr[mid:]
 
-def mergeSort(list_to_sort_by_merge):
-    if (
-        len(list_to_sort_by_merge) > 1
-        and not len(list_to_sort_by_merge) < 1
-        and len(list_to_sort_by_merge) != 0
-    ):
-        mid = len(list_to_sort_by_merge) // 2
-        left = list_to_sort_by_merge[:mid]
-        right = list_to_sort_by_merge[mid:]
+        merge_sort(left_arr)
+        merge_sort(right_arr)
 
-        mergeSort(left)
-        mergeSort(right)
+        l_index = 0 # Bessere Name für Lesbarkeit (5)
+        r_index = 0
+        i_index = 0
 
-        l = 0
-        r = 0
-        i = 0
+        length_rigth = len(right_arr) # Bei jedes Mal führen wir die selbe Funktion aus, um die Länge der Liste zu kriegen. Es ist besser nur einmal, sie auszuführen. (6)
+        length_left = len(left_arr)
 
-        while l < len(left) and r < len(right):
-            if left[l] <= right[r]:
-                ASSIGNMENT(new_list=list_to_sort_by_merge, i=i, old_list=left, j=l)
-                l += 1
+        while l_index < length_left and r_index < length_rigth:
+            if left_arr[l_index] <= right_arr[r_index]:
+                arr[i_index] = left_arr[l_index] # Nur für einige Zeile ist das nicht sinvoll, eine Methode zu definieren. Deswegen sieht komplizierter aus. (4)
+                l_index += 1
             else:
-                ASSIGNMENT(new_list=list_to_sort_by_merge, i=i, old_list=right, j=r)
-                r += 1
-            i += 1
+                arr[i_index] = right_arr[r_index]  # Nur für einige Zeile ist das nicht sinvoll, eine Methode zu definieren. Deswegen sieht komplizierter aus.
+                r_index += 1
+            i_index += 1
 
-        while l < len(left):
-            list_to_sort_by_merge[i] = left[l]
-            l += 1
-            i += 1
+        while l_index < length_left:
+            arr[i_index] = left_arr[l_index]
+            l_index += 1
+            i_index += 1
 
-        while r < len(right):
-            list_to_sort_by_merge[i] = right[r]
-            r += 1
-            i += 1
+        while r_index < length_rigth:
+            arr[i_index] = right_arr[r_index]
+            r_index += 1
+            i_index += 1
 
 
-import matplotlib.pyplot as plt
+def plot_sort(arr): # Ich habe dieses Teil von main Methode für Lesbarkeit getrennt. (8)
+ length_arr = range(len(arr)) # Bessere Name für dieses Variabel und, weil Lange der Liste sich nicht nach der Sortierung ändert, werden wir dasselbe Variable nochmal benutzen. (9)
+ plt.plot(length_arr,arr)
+ plt.show()
 
-my_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
-x = range(len(my_list))
-plt.plot(x, my_list)
-plt.show()
-mergeSort(my_list)
-x = range(len(my_list))
-plt.plot(x, my_list)
-plt.show()
+ merge_sort(arr)
+ plt.plot(length_arr,arr)
+ plt.show()
+
+def main(): # Ich habe main Methode für Lesbarkeit betont.(10)
+ my_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+ plot_sort(my_list)
+
+main()
