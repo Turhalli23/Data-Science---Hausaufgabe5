@@ -1,4 +1,5 @@
 def ASSIGNMENT(new_list, i, old_list, j):
+    #kommentar
     new_list[i] = old_list[j]
 
 
