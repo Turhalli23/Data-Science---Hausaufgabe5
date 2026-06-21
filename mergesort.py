@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt # Import soll am Anfang für Lesbarkeit bleiben
 
 def merge_sort(arr): # Name der Variable ist zu lang (1) und bessere Name für Methode (2)
-    if (len(arr) > 1): # Wenn Lange der Liste größer als 1 ist, sind andere Voraussetzungen schon erfüllt. (3)
+    if (len(arr) > 1): # Wenn Lange der Liste größer als 1 ist, sind andere Voraussetzungen schon unnötig. (3)
         mid = len(arr) // 2
         left_arr = arr[:mid] # Bessere Name für Lesbarkeit (7)
         right_arr = arr[mid:]
@@ -51,8 +51,7 @@ def plot_sort(arr):
     plt.ylabel("Wert")
     plt.title("Nach dem Sortieren")
     plt.show()
-
-
+    
 def main(): # Ich habe main Methode für Lesbarkeit betont.(10)
  my_list = [54, 26, 93, 17, 77, 31, 44, 55, 20]
  plot_sort(my_list)
